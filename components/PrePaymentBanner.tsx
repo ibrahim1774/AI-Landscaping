@@ -161,7 +161,7 @@ const PrePaymentBanner: React.FC<PrePaymentBannerProps> = ({ onDeploy, isDeployi
           }}
         >
           <div
-            className="border border-white/10 rounded-3xl max-w-lg w-full shadow-2xl p-4 md:p-8 relative overflow-y-auto max-h-[90vh]"
+            className="border border-white/10 rounded-3xl max-w-lg w-full shadow-2xl p-4 md:p-6 relative overflow-y-auto max-h-[90vh]"
             style={{
               fontFamily: '"DM Sans", sans-serif',
               background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%)',
@@ -193,7 +193,7 @@ const PrePaymentBanner: React.FC<PrePaymentBannerProps> = ({ onDeploy, isDeployi
 
             {/* Headline */}
             <h2
-              className="text-2xl md:text-3xl font-bold text-white text-center mb-3 leading-tight"
+              className="text-xl md:text-2xl font-bold text-white text-center mb-2 leading-tight"
               style={{ fontFamily: '"DM Sans", sans-serif' }}
             >
               Your Fully Custom Website —{' '}
@@ -204,7 +204,7 @@ const PrePaymentBanner: React.FC<PrePaymentBannerProps> = ({ onDeploy, isDeployi
 
             {/* Subtitle */}
             <p
-              className="text-[#94a3b8] text-sm text-center mb-4 max-w-md mx-auto leading-relaxed"
+              className="text-[#94a3b8] text-sm text-center mb-3 max-w-md mx-auto leading-snug"
               style={{ fontFamily: '"DM Sans", sans-serif' }}
             >
               What you're seeing is a sample proof of concept. When you deploy, your real site gets built with full account
@@ -216,10 +216,10 @@ const PrePaymentBanner: React.FC<PrePaymentBannerProps> = ({ onDeploy, isDeployi
               {STEPS.map((step, i) => (
                 <div
                   key={i}
-                  className="bg-white/5 border border-white/10 rounded-2xl p-4"
+                  className="bg-white/5 border border-white/10 rounded-2xl p-3"
                 >
                   <div className="flex items-center gap-3">
-                    <span className="text-2xl shrink-0">{step.emoji}</span>
+                    <span className="text-lg shrink-0">{step.emoji}</span>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2">
                         <span
@@ -239,7 +239,7 @@ const PrePaymentBanner: React.FC<PrePaymentBannerProps> = ({ onDeploy, isDeployi
                   </div>
 
                   <p
-                    className="text-[#94a3b8] text-sm pl-11 leading-relaxed mt-2"
+                    className="text-[#94a3b8] text-xs pl-9 leading-snug mt-1"
                     style={{ fontFamily: '"DM Sans", sans-serif' }}
                   >
                     {step.description}
@@ -249,7 +249,7 @@ const PrePaymentBanner: React.FC<PrePaymentBannerProps> = ({ onDeploy, isDeployi
             </div>
 
             {/* Price box */}
-            <div className="text-center my-6 py-4 border-t border-b border-white/10">
+            <div className="text-center my-3 py-3 border-t border-b border-white/10">
               <p className="text-xl font-bold text-white" style={{ fontFamily: '"Instrument Serif", serif' }}>
                 $10<span className="text-base">/month</span>{' '}
                 <span className="text-[#94a3b8] font-normal" style={{ fontFamily: '"DM Sans", sans-serif' }}>
@@ -274,7 +274,7 @@ const PrePaymentBanner: React.FC<PrePaymentBannerProps> = ({ onDeploy, isDeployi
             <button
               onClick={handleModalDeploy}
               disabled={isDeploying}
-              className="w-full text-white py-4 rounded-2xl text-base font-bold flex items-center justify-center gap-2 hover:brightness-110 active:scale-[0.98] transition-all disabled:opacity-50 shadow-lg shadow-green-500/25"
+              className="w-full text-white py-3 rounded-2xl text-base font-bold flex items-center justify-center gap-2 hover:brightness-110 active:scale-[0.98] transition-all disabled:opacity-50 shadow-lg shadow-green-500/25"
               style={{
                 fontFamily: '"DM Sans", sans-serif',
                 background: 'linear-gradient(135deg, #16a34a, #22c55e)',
