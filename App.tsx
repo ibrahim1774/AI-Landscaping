@@ -620,7 +620,7 @@ const App: React.FC = () => {
 
           {/* Pre-payment bottom banner */}
           {!isPostPayment && (
-            <PrePaymentBanner onDeploy={handleDeploy} isDeploying={deploymentStatus === 'deploying'} />
+            <PrePaymentBanner onDeploy={handleDeploy} isDeploying={deploymentStatus === 'deploying'} industry={activeSite?.formInputs?.industry} />
           )}
 
           {/* Deployment Status Overlay (deploying / error states) */}

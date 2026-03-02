@@ -4,15 +4,16 @@ import { X, ArrowRight, Rocket, Loader2 } from 'lucide-react';
 interface PrePaymentBannerProps {
   onDeploy: () => void;
   isDeploying: boolean;
+  industry?: string;
 }
 
-const STEPS = [
+const getSteps = (industry: string) => [
   {
     number: '01',
     emoji: '🎨',
-    title: 'Fully Custom Site Built For You',
+    title: 'Professional & Modern Website',
     description:
-      'A complete, professional website tailored to your business — no big upfront costs or expensive developer fees.',
+      `A clean, modern website built for your ${industry.toLowerCase()} business — fully customizable so you can get up and running fast.`,
   },
   {
     number: '02',
@@ -30,7 +31,8 @@ const STEPS = [
   },
 ];
 
-const PrePaymentBanner: React.FC<PrePaymentBannerProps> = ({ onDeploy, isDeploying }) => {
+const PrePaymentBanner: React.FC<PrePaymentBannerProps> = ({ onDeploy, isDeploying, industry = 'landscaping' }) => {
+  const steps = getSteps(industry);
   const [isBannerVisible, setIsBannerVisible] = useState(false);
   const [isBannerDismissed, setIsBannerDismissed] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -187,7 +189,7 @@ const PrePaymentBanner: React.FC<PrePaymentBannerProps> = ({ onDeploy, isDeployi
                 className="text-xs font-semibold text-green-400 uppercase tracking-widest"
                 style={{ fontFamily: '"DM Sans", sans-serif' }}
               >
-                Site Preview
+                How It Works
               </span>
             </div>
 
@@ -207,13 +209,12 @@ const PrePaymentBanner: React.FC<PrePaymentBannerProps> = ({ onDeploy, isDeployi
               className="text-[#94a3b8] text-sm text-center mb-3 max-w-md mx-auto leading-snug"
               style={{ fontFamily: '"DM Sans", sans-serif' }}
             >
-              What you're seeing is a sample proof of concept. When you deploy, your real site gets built with full account
-              access — edit text, swap images, and update anything at any time.
+              Deploy your site and get full account access — edit text, swap images, and update anything at any time.
             </p>
 
             {/* Steps */}
             <div className="space-y-2 mb-4">
-              {STEPS.map((step, i) => (
+              {steps.map((step, i) => (
                 <div
                   key={i}
                   className="bg-white/5 border border-white/10 rounded-2xl p-3"
@@ -260,7 +261,7 @@ const PrePaymentBanner: React.FC<PrePaymentBannerProps> = ({ onDeploy, isDeployi
                 className="text-[#94a3b8] text-xs mt-2 leading-relaxed"
                 style={{ fontFamily: '"DM Sans", sans-serif' }}
               >
-                No setup fees &bull; No hidden charges &bull; No contracts &bull; No paying hundreds a month
+                No setup fees &bull; No contracts &bull; Cancel anytime
               </p>
               <p
                 className="text-[#94a3b8] text-xs mt-1"
