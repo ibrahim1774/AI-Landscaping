@@ -20,10 +20,10 @@ export const generateSiteContent = async (inputs: GeneratorInputs): Promise<Gene
   try {
     // 1. Prepare Prompts
     const textPrompt = SYSTEM_PROMPT
-      .replace("{industry}", inputs.industry)
-      .replace("{companyName}", inputs.companyName)
-      .replace("{location}", inputs.location)
-      .replace("{phone}", inputs.phone);
+      .replaceAll("{industry}", inputs.industry)
+      .replaceAll("{companyName}", inputs.companyName)
+      .replaceAll("{location}", inputs.location)
+      .replaceAll("{phone}", inputs.phone);
 
     const imagePromptHero = `Wide establishing shot of a professional landscaping crew working on a beautiful residential lawn and garden in ${inputs.location}. Lush green grass, manicured hedges, professional uniforms, golden hour lighting, 8k resolution. No text.`;
     const imagePromptValue = `Action shot of a landscaping professional planting flowers in a garden bed. Close-up on expert hands working with soil, natural sunlight, vibrant green plants, high quality. No text.`;
