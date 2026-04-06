@@ -97,6 +97,13 @@ const App: React.FC = () => {
     }
   }, [authLoading, isAuthenticated, user]);
 
+  // ─── Reset stale deploying state (e.g. browser back from Stripe checkout) ───
+  useEffect(() => {
+    if (deploymentStatus === 'deploying' && !window.location.search.includes('payment=success')) {
+      setDeploymentStatus('idle');
+    }
+  }, []);
+
   // ─── Handle Payment Success & Auto-Deploy ───
   useEffect(() => {
     const checkPaymentAndDeploy = async () => {
