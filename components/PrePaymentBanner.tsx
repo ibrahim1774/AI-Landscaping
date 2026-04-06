@@ -122,7 +122,7 @@ const PrePaymentBanner: React.FC<PrePaymentBannerProps> = ({ onDeploy, isDeployi
               <p className="text-sm text-[#e2e8f0] leading-relaxed" style={{ fontFamily: '"DM Sans", sans-serif' }}>
                 Just pay for hosting—it's{' '}
                 <span className="font-semibold text-green-400" style={{ fontFamily: '"Instrument Serif", serif' }}>
-                  {pricingPlan === 'monthly' ? '$10/month' : '$49/year'}
+                  {pricingPlan === 'monthly' ? '$10/month' : '$72/year'}
                 </span>
                 . You can make an account after publishing the site and change the text and images as well.
               </p>
@@ -152,7 +152,7 @@ const PrePaymentBanner: React.FC<PrePaymentBannerProps> = ({ onDeploy, isDeployi
                 >
                   Yearly
                   <span className="bg-yellow-400/90 text-black text-[10px] font-extrabold px-1.5 py-0.5 rounded-full leading-none">
-                    Save 59%
+                    Save 40%
                   </span>
                 </button>
               </div>
@@ -176,7 +176,7 @@ const PrePaymentBanner: React.FC<PrePaymentBannerProps> = ({ onDeploy, isDeployi
                   }}
                 >
                   {isDeploying ? <Loader2 size={16} className="animate-spin" /> : <ArrowRight size={16} />}
-                  {pricingPlan === 'monthly' ? 'Publish My Website — $10/mo' : 'Publish My Website — $49/yr'}
+                  {pricingPlan === 'monthly' ? 'Publish My Website — $10/mo' : 'Publish My Website — $72/yr'}
                 </button>
               </div>
             </div>
@@ -230,7 +230,7 @@ const PrePaymentBanner: React.FC<PrePaymentBannerProps> = ({ onDeploy, isDeployi
             >
               Your Fully Custom Website —{' '}
               <span style={{ fontFamily: '"Instrument Serif", serif' }} className="text-green-400">
-                {pricingPlan === 'monthly' ? 'Just $10/mo' : 'Just $49/yr'}
+                {pricingPlan === 'monthly' ? 'Just $10/mo' : 'Just $72/yr'}
               </span>
             </h2>
 
@@ -301,7 +301,7 @@ const PrePaymentBanner: React.FC<PrePaymentBannerProps> = ({ onDeploy, isDeployi
               >
                 Yearly
                 <span className="bg-yellow-400/90 text-black text-[10px] font-extrabold px-1.5 py-0.5 rounded-full leading-none">
-                  Save 59%
+                  Save 40%
                 </span>
               </button>
             </div>
@@ -314,7 +314,7 @@ const PrePaymentBanner: React.FC<PrePaymentBannerProps> = ({ onDeploy, isDeployi
                 ) : (
                   <>
                     <span className="line-through text-gray-500 text-base mr-2">$120/yr</span>
-                    $49<span className="text-base">/year</span>
+                    $72<span className="text-base">/year</span>
                   </>
                 )}{' '}
                 <span className="text-[#94a3b8] font-normal" style={{ fontFamily: '"DM Sans", sans-serif' }}>
@@ -346,7 +346,7 @@ const PrePaymentBanner: React.FC<PrePaymentBannerProps> = ({ onDeploy, isDeployi
               }}
             >
               {isDeploying ? <Loader2 size={18} className="animate-spin" /> : <Rocket size={18} />}
-              {pricingPlan === 'monthly' ? 'Publish My Website — $10/mo' : 'Publish My Website — $49/yr'}
+              {pricingPlan === 'monthly' ? 'Publish My Website — $10/mo' : 'Publish My Website — $72/yr'}
             </button>
           </div>
         </div>

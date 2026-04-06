@@ -11,7 +11,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const { companyName, siteId, plan = 'monthly' } = req.body || {};
 
     const isYearly = plan === 'yearly';
-    const unitAmount = isYearly ? 4900 : 1000;
+    const unitAmount = isYearly ? 7200 : 1000;
     const interval = isYearly ? 'year' : 'month';
 
     console.log(`[Stripe Checkout] Creating session for: ${companyName || 'Unknown'} (Site: ${siteId || 'N/A'}, Plan: ${plan})`);
