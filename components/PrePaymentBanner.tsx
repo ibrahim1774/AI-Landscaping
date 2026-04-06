@@ -20,7 +20,7 @@ const getSteps = (industry: string) => [
     emoji: '🔧',
     title: 'Account Access',
     description:
-      'After deploying, create an account to swap images, change text, and update your page anytime.',
+      'After publishing, create an account to swap images, change text, and update your page anytime.',
   },
   {
     number: '03',
@@ -123,7 +123,7 @@ const PrePaymentBanner: React.FC<PrePaymentBannerProps> = ({ onDeploy, isDeployi
                 <span className="font-semibold text-green-400" style={{ fontFamily: '"Instrument Serif", serif' }}>
                   $10/month
                 </span>
-                . You can make an account after deploying the site and change the text and images as well.
+                . You can make an account after publishing the site and change the text and images as well.
               </p>
             </div>
 
@@ -147,7 +147,7 @@ const PrePaymentBanner: React.FC<PrePaymentBannerProps> = ({ onDeploy, isDeployi
                 }}
               >
                 {isDeploying ? <Loader2 size={16} className="animate-spin" /> : <ArrowRight size={16} />}
-                Deploy My Site — $10/mo
+                Publish My Website — $10/mo
               </button>
             </div>
           </div>
@@ -209,7 +209,7 @@ const PrePaymentBanner: React.FC<PrePaymentBannerProps> = ({ onDeploy, isDeployi
               className="text-[#94a3b8] text-sm text-center mb-3 max-w-md mx-auto leading-snug"
               style={{ fontFamily: '"DM Sans", sans-serif' }}
             >
-              Deploy your site and get full account access — edit text, swap images, and update anything at any time.
+              Publish your site and get full account access — edit text, swap images, and update anything at any time.
             </p>
 
             {/* Steps */}
@@ -267,7 +267,7 @@ const PrePaymentBanner: React.FC<PrePaymentBannerProps> = ({ onDeploy, isDeployi
                 className="text-[#94a3b8] text-xs mt-1"
                 style={{ fontFamily: '"DM Sans", sans-serif' }}
               >
-                Just a small hosting fee to keep your site live — site building &amp; deployment included.
+                Just a small hosting fee to keep your site live — site building &amp; publishing included.
               </p>
             </div>
 
@@ -282,7 +282,7 @@ const PrePaymentBanner: React.FC<PrePaymentBannerProps> = ({ onDeploy, isDeployi
               }}
             >
               {isDeploying ? <Loader2 size={18} className="animate-spin" /> : <Rocket size={18} />}
-              Deploy My Site — $10/mo
+              Publish My Website — $10/mo
             </button>
           </div>
         </div>
