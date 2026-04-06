@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { X, ArrowRight, Rocket, Loader2 } from 'lucide-react';
 
 interface PrePaymentBannerProps {
-  onDeploy: () => void;
+  onDeploy: (plan: 'monthly' | 'yearly') => void;
   isDeploying: boolean;
   industry?: string;
 }
@@ -37,6 +37,7 @@ const PrePaymentBanner: React.FC<PrePaymentBannerProps> = ({ onDeploy, isDeployi
   const [isBannerDismissed, setIsBannerDismissed] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [pricingPlan, setPricingPlan] = useState<'monthly' | 'yearly'>('monthly');
 
   // Check for mobile viewport
   useEffect(() => {
@@ -72,7 +73,7 @@ const PrePaymentBanner: React.FC<PrePaymentBannerProps> = ({ onDeploy, isDeployi
 
   const handleModalDeploy = () => {
     setIsModalOpen(false);
-    onDeploy();
+    onDeploy(pricingPlan);
   };
 
   return (
@@ -121,34 +122,63 @@ const PrePaymentBanner: React.FC<PrePaymentBannerProps> = ({ onDeploy, isDeployi
               <p className="text-sm text-[#e2e8f0] leading-relaxed" style={{ fontFamily: '"DM Sans", sans-serif' }}>
                 Just pay for hosting—it's{' '}
                 <span className="font-semibold text-green-400" style={{ fontFamily: '"Instrument Serif", serif' }}>
-                  $10/month
+                  {pricingPlan === 'monthly' ? '$10/month' : '$49/year'}
                 </span>
                 . You can make an account after publishing the site and change the text and images as well.
               </p>
             </div>
 
-            {/* Right: Buttons */}
-            <div className="flex items-center gap-3 shrink-0 w-full md:w-auto">
-              <button
-                onClick={() => setIsModalOpen(true)}
-                className="border border-white/20 text-[#e2e8f0] px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-white/5 hover:border-white/30 transition-all whitespace-nowrap flex-1 md:flex-none"
-                style={{ fontFamily: '"DM Sans", sans-serif' }}
-              >
-                How It Works
-              </button>
+            {/* Toggle + Buttons */}
+            <div className="flex flex-col items-center gap-2 shrink-0 w-full md:w-auto">
+              {/* Monthly / Yearly toggle */}
+              <div className="flex items-center gap-1 bg-white/5 border border-white/10 rounded-xl p-0.5" style={{ fontFamily: '"DM Sans", sans-serif' }}>
+                <button
+                  onClick={() => setPricingPlan('monthly')}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                    pricingPlan === 'monthly'
+                      ? 'bg-green-500 text-white shadow-sm'
+                      : 'text-gray-400 hover:text-white'
+                  }`}
+                >
+                  Monthly
+                </button>
+                <button
+                  onClick={() => setPricingPlan('yearly')}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
+                    pricingPlan === 'yearly'
+                      ? 'bg-green-500 text-white shadow-sm'
+                      : 'text-gray-400 hover:text-white'
+                  }`}
+                >
+                  Yearly
+                  <span className="bg-yellow-400/90 text-black text-[10px] font-extrabold px-1.5 py-0.5 rounded-full leading-none">
+                    Save 59%
+                  </span>
+                </button>
+              </div>
 
-              <button
-                onClick={onDeploy}
-                disabled={isDeploying}
-                className="text-white px-5 md:px-6 py-2.5 rounded-xl text-sm font-bold flex items-center justify-center gap-2 hover:brightness-110 active:scale-[0.97] transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-green-500/20 whitespace-nowrap flex-1 md:flex-none"
-                style={{
-                  fontFamily: '"DM Sans", sans-serif',
-                  background: 'linear-gradient(135deg, #16a34a, #22c55e)',
-                }}
-              >
-                {isDeploying ? <Loader2 size={16} className="animate-spin" /> : <ArrowRight size={16} />}
-                Publish My Website — $10/mo
-              </button>
+              <div className="flex items-center gap-3 w-full md:w-auto">
+                <button
+                  onClick={() => setIsModalOpen(true)}
+                  className="border border-white/20 text-[#e2e8f0] px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-white/5 hover:border-white/30 transition-all whitespace-nowrap flex-1 md:flex-none"
+                  style={{ fontFamily: '"DM Sans", sans-serif' }}
+                >
+                  How It Works
+                </button>
+
+                <button
+                  onClick={() => onDeploy(pricingPlan)}
+                  disabled={isDeploying}
+                  className="text-white px-5 md:px-6 py-2.5 rounded-xl text-sm font-bold flex items-center justify-center gap-2 hover:brightness-110 active:scale-[0.97] transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-green-500/20 whitespace-nowrap flex-1 md:flex-none"
+                  style={{
+                    fontFamily: '"DM Sans", sans-serif',
+                    background: 'linear-gradient(135deg, #16a34a, #22c55e)',
+                  }}
+                >
+                  {isDeploying ? <Loader2 size={16} className="animate-spin" /> : <ArrowRight size={16} />}
+                  {pricingPlan === 'monthly' ? 'Publish My Website — $10/mo' : 'Publish My Website — $49/yr'}
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -200,7 +230,7 @@ const PrePaymentBanner: React.FC<PrePaymentBannerProps> = ({ onDeploy, isDeployi
             >
               Your Fully Custom Website —{' '}
               <span style={{ fontFamily: '"Instrument Serif", serif' }} className="text-green-400">
-                Just $10/mo
+                {pricingPlan === 'monthly' ? 'Just $10/mo' : 'Just $49/yr'}
               </span>
             </h2>
 
@@ -249,10 +279,44 @@ const PrePaymentBanner: React.FC<PrePaymentBannerProps> = ({ onDeploy, isDeployi
               ))}
             </div>
 
+            {/* Monthly / Yearly toggle (modal) */}
+            <div className="flex items-center justify-center gap-1 bg-white/5 border border-white/10 rounded-xl p-0.5 mb-3 mx-auto w-fit" style={{ fontFamily: '"DM Sans", sans-serif' }}>
+              <button
+                onClick={() => setPricingPlan('monthly')}
+                className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                  pricingPlan === 'monthly'
+                    ? 'bg-green-500 text-white shadow-sm'
+                    : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                Monthly
+              </button>
+              <button
+                onClick={() => setPricingPlan('yearly')}
+                className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
+                  pricingPlan === 'yearly'
+                    ? 'bg-green-500 text-white shadow-sm'
+                    : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                Yearly
+                <span className="bg-yellow-400/90 text-black text-[10px] font-extrabold px-1.5 py-0.5 rounded-full leading-none">
+                  Save 59%
+                </span>
+              </button>
+            </div>
+
             {/* Price box */}
             <div className="text-center my-3 py-3 border-t border-b border-white/10">
               <p className="text-xl font-bold text-white" style={{ fontFamily: '"Instrument Serif", serif' }}>
-                $10<span className="text-base">/month</span>{' '}
+                {pricingPlan === 'monthly' ? (
+                  <>$10<span className="text-base">/month</span></>
+                ) : (
+                  <>
+                    <span className="line-through text-gray-500 text-base mr-2">$120/yr</span>
+                    $49<span className="text-base">/year</span>
+                  </>
+                )}{' '}
                 <span className="text-[#94a3b8] font-normal" style={{ fontFamily: '"DM Sans", sans-serif' }}>
                   — hosting only
                 </span>
@@ -282,7 +346,7 @@ const PrePaymentBanner: React.FC<PrePaymentBannerProps> = ({ onDeploy, isDeployi
               }}
             >
               {isDeploying ? <Loader2 size={18} className="animate-spin" /> : <Rocket size={18} />}
-              Publish My Website — $10/mo
+              {pricingPlan === 'monthly' ? 'Publish My Website — $10/mo' : 'Publish My Website — $49/yr'}
             </button>
           </div>
         </div>

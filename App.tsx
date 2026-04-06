@@ -358,7 +358,7 @@ const App: React.FC = () => {
   }, [activeSite, user?.id]);
 
   // ─── Pre-payment deploy (checkout) ───
-  const handleDeploy = async () => {
+  const handleDeploy = async (plan: 'monthly' | 'yearly' = 'monthly') => {
     if (!activeSite) return;
 
     // Save locally one last time
@@ -376,7 +376,8 @@ const App: React.FC = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           companyName: activeSite.data.contact.companyName,
-          siteId: activeSite.id
+          siteId: activeSite.id,
+          plan
         }),
       });
 
